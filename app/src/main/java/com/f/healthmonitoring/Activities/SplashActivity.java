@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.f.healthmonitoring.R;
 
@@ -23,7 +26,10 @@ public class SplashActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-       
+        ImageView imageView1=findViewById(R.id.img);
+        //animation
+        Animation animation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade);
+        imageView1.startAnimation(animation);
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {

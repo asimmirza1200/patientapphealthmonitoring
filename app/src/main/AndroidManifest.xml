@@ -28,6 +28,15 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".Activities.CheckTemperatureActivity"
+            />
+        <activity
+            android:name=".Activities.CheckHeartbeatActivity"
+           />
+        <activity
+            android:name=".Activities.CheckEcgActivity"
+            />
+        <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
