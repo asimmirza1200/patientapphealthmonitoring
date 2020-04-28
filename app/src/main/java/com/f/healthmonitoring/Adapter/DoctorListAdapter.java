@@ -40,7 +40,7 @@ public Button profiles,send;
 send.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent =new Intent(context,SendMassageActivity.class);
+        Intent intent =new Intent(context, SendMassageActivity.class);
         context.startActivity(intent);
     }
 });
