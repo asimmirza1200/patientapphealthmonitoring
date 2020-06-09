@@ -15,6 +15,7 @@ import com.f.healthmonitoring.Activities.SendMassageActivity;
 import com.f.healthmonitoring.Model.Doctor;
 import com.f.healthmonitoring.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,8 +74,12 @@ send.setOnClickListener(new View.OnClickListener() {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(context,ProfileActivityDoctor.class);
-                context.startActivity(intent);
+                Intent mainIntent = new Intent(context, ProfileActivityDoctor.class);
+                mainIntent.putExtra("Doctor",(Serializable) movie);
+
+
+
+                context.startActivity(mainIntent);
             }
         });
 

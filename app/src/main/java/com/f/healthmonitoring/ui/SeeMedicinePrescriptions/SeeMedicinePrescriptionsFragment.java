@@ -68,16 +68,14 @@ public class SeeMedicinePrescriptionsFragment extends Fragment {
         });
         RecyclerView recyclerView = root.findViewById(R.id.recycler_view);
         medicines = new ArrayList<>();
-        medicines.add(new Medicine("Panadol","Atif"));
-        medicines.add(new Medicine("Panadol","Ali"));
-        medicines.add(new Medicine("Panadol","Umer"));
-        medicines.add(new Medicine("Panadol","Hasan"));
-        medicines.add(new Medicine("Panadol","Umair"));
-        medicines.add(new Medicine("Panadol","Hamza"));
-        medicines.add(new Medicine("Panadol","Danish"));
-        medicines.add(new Medicine("Panadol","Jamal"));
-        medicines.add(new Medicine("Panadol","Asim"));
-        medicines.add(new Medicine("Panadol","Adnan"));
+        medicines.add(new Medicine("Panadol","Atif","null","fever"));
+        medicines.add(new Medicine("Panadol","Atif","null","fever"));
+        medicines.add(new Medicine("Panadol","Atif","null","fever"));
+        medicines.add(new Medicine("Panadol","Atif","null","fever"));
+        medicines.add(new Medicine("Panadol","Atif","null","fever"));
+        medicines.add(new Medicine("Panadol","Atif","null","fever"));
+        medicines.add(new Medicine("Panadol","Atif","null","fever"));
+        medicines.add(new Medicine("Panadol","Atif","null","fever"));
 
         list = new MedicineListAdapter(medicines, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());

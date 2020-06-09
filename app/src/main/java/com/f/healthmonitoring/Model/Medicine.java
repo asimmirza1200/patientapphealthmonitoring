@@ -4,12 +4,30 @@ package com.f.healthmonitoring.Model;
 public class Medicine {
 
 
-    private String Medicinename, PrescriptedBy;
+    private String Medicinename, PrescriptedBy,Symptoms,Disease;
 
 
-    public Medicine(String medicinename,String prescriptedBy) {
+    public String getSymptoms() {
+        return Symptoms;
+    }
+
+    public void setSymptoms(String symptoms) {
+        Symptoms = symptoms;
+    }
+
+    public String getDisease() {
+        return Disease;
+    }
+
+    public void setDisease(String disease) {
+        Disease = disease;
+    }
+
+    public Medicine(String medicinename, String prescriptedBy, String symptoms, String disease) {
         this.Medicinename = medicinename;
         this.PrescriptedBy = prescriptedBy;
+        this.Symptoms = symptoms;
+        this.Disease = disease;
 
 
     }

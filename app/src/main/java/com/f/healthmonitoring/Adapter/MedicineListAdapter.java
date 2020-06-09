@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.f.healthmonitoring.Activities.MainActivity;
-import com.f.healthmonitoring.Model.Doctor;
 import com.f.healthmonitoring.Model.Medicine;
 import com.f.healthmonitoring.R;
 
@@ -36,12 +35,14 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView medicinename,prescriptedBy;
+        public TextView medicinename,prescriptedBy,symptoms,disease;
 
         public MyViewHolder(View view) {
             super(view);
-            medicinename = (TextView) view.findViewById(R.id.mname);
-            prescriptedBy = (TextView) view.findViewById(R.id.prename);
+            medicinename = (TextView) view.findViewById(R.id.medicine);
+            prescriptedBy = (TextView) view.findViewById(R.id.prescripted);
+            symptoms = (TextView) view.findViewById(R.id.symptoms);
+            disease = (TextView) view.findViewById(R.id.disease);
 
 
 
@@ -70,6 +71,8 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
          final Medicine movie = filterMedicineList.get(position);
         holder.medicinename.setText(movie.getMedicinename());
         holder.prescriptedBy.setText(movie.getPrescriptedBy());
+        holder.symptoms.setText(movie.getSymptoms());
+        holder.disease.setText(movie.getDisease());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

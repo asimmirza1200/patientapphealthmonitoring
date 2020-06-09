@@ -1,6 +1,7 @@
 package com.f.healthmonitoring.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageView logo;
     LinearLayout new_user_layout;
     CardView login_card;
-ProgressBar progressBar;
+    ProgressBar progressBar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +119,12 @@ ProgressBar progressBar;
                     if (Boolean.parseBoolean(response.body().getStatus())) {
 
                         Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                        SharedPreferences.Editor prefs = getSharedPreferences("login", MODE_PRIVATE).edit();
+                        prefs.putString("Token", response.body().getData().getAccessToken());//"No name defined" is the default value.
+                        prefs.putString("name", response.body().getData().getDoctorname());//"No name defined" is the default value.
+                        prefs.putString("phone", response.body().getData().getPhonenumber());//"No name defined" is the default value.
+                        prefs.putString("id", response.body().getData().getId());//"No name defined" is the default value
+                        prefs.apply();
                         LoginActivity.this.startActivity(mainIntent);
                         LoginActivity.this.finish();
                         Toast.makeText(LoginActivity.this,response.body().getMessage() , Toast.LENGTH_SHORT).show();

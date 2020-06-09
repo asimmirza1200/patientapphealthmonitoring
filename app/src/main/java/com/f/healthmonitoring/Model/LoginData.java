@@ -9,9 +9,27 @@ public class LoginData {
     @SerializedName("_id")
     @Expose
     private String id;
-    @SerializedName("accessToken")
+    @SerializedName("doctorname")
     @Expose
-    private String accessToken;
+    private String doctorname;
+    @SerializedName("fathername")
+    @Expose
+    private String fathername;
+    @SerializedName("address")
+    @Expose
+    private String address;
+    @SerializedName("qualification")
+    @Expose
+    private String qualification;
+    @SerializedName("phonenumber")
+    @Expose
+    private String phonenumber;
+    @SerializedName("specialization")
+    @Expose
+    private String specialization;
+    @SerializedName("password")
+    @Expose
+    private String password;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -21,6 +39,9 @@ public class LoginData {
     @SerializedName("__v")
     @Expose
     private Integer v;
+    @SerializedName("accessToken")
+    @Expose
+    private String accessToken;
 
     public String getId() {
         return id;
@@ -30,12 +51,60 @@ public class LoginData {
         this.id = id;
     }
 
-    public String getAccessToken() {
-        return accessToken;
+    public String getDoctorname() {
+        return doctorname;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+    public void setDoctorname(String doctorname) {
+        this.doctorname = doctorname;
+    }
+
+    public String getFathername() {
+        return fathername;
+    }
+
+    public void setFathername(String fathername) {
+        this.fathername = fathername;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getQualification() {
+        return qualification;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getCreatedAt() {
@@ -60,6 +129,14 @@ public class LoginData {
 
     public void setV(Integer v) {
         this.v = v;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
 }
