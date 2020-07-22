@@ -4,32 +4,37 @@ package com.f.healthmonitoring.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Doctor {
+import java.io.Serializable;
+
+public class PatientData implements Serializable {
 
     @SerializedName("_id")
     @Expose
     private String id;
-    @SerializedName("doctorname")
+    @SerializedName("patientname")
     @Expose
-    private String doctorname;
+    private String patientname;
     @SerializedName("fathername")
     @Expose
     private String fathername;
     @SerializedName("address")
     @Expose
     private String address;
-    @SerializedName("qualification")
+    @SerializedName("deviceid")
     @Expose
-    private String qualification;
+    private String deviceid;
     @SerializedName("phonenumber")
     @Expose
     private String phonenumber;
-    @SerializedName("specialization")
+    @SerializedName("disease")
     @Expose
-    private String specialization;
+    private String disease;
     @SerializedName("password")
     @Expose
     private String password;
+    @SerializedName("accessToken")
+    @Expose
+    private String accessToken;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -39,9 +44,6 @@ public class Doctor {
     @SerializedName("__v")
     @Expose
     private Integer v;
-    @SerializedName("accessToken")
-    @Expose
-    private String accessToken;
 
     public String getId() {
         return id;
@@ -51,12 +53,12 @@ public class Doctor {
         this.id = id;
     }
 
-    public String getDoctorname() {
-        return doctorname;
+    public String getPatientname() {
+        return patientname;
     }
 
-    public void setDoctorname(String doctorname) {
-        this.doctorname = doctorname;
+    public void setPatientname(String patientname) {
+        this.patientname = patientname;
     }
 
     public String getFathername() {
@@ -75,12 +77,12 @@ public class Doctor {
         this.address = address;
     }
 
-    public String getQualification() {
-        return qualification;
+    public String getDeviceid() {
+        return deviceid;
     }
 
-    public void setQualification(String qualification) {
-        this.qualification = qualification;
+    public void setDeviceid(String deviceid) {
+        this.deviceid = deviceid;
     }
 
     public String getPhonenumber() {
@@ -91,12 +93,12 @@ public class Doctor {
         this.phonenumber = phonenumber;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getDisease() {
+        return disease;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setDisease(String disease) {
+        this.disease = disease;
     }
 
     public String getPassword() {
@@ -105,6 +107,14 @@ public class Doctor {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public String getCreatedAt() {
@@ -129,14 +139,6 @@ public class Doctor {
 
     public void setV(Integer v) {
         this.v = v;
-    }
-
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
     }
 
 }

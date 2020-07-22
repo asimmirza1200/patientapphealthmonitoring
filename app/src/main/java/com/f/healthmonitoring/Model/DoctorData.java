@@ -4,35 +4,34 @@ package com.f.healthmonitoring.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginData {
+import java.io.Serializable;
+
+public class DoctorData implements Serializable {
 
     @SerializedName("_id")
     @Expose
     private String id;
-    @SerializedName("patientname")
+    @SerializedName("doctorname")
     @Expose
-    private String patientname;
+    private String doctorname;
     @SerializedName("fathername")
     @Expose
     private String fathername;
     @SerializedName("address")
     @Expose
     private String address;
-    @SerializedName("deviceid")
+    @SerializedName("qualification")
     @Expose
-    private String deviceid;
+    private String qualification;
     @SerializedName("phonenumber")
     @Expose
     private String phonenumber;
-    @SerializedName("disease")
+    @SerializedName("specialization")
     @Expose
-    private String disease;
+    private String specialization;
     @SerializedName("password")
     @Expose
     private String password;
-    @SerializedName("accessToken")
-    @Expose
-    private String accessToken;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -42,6 +41,9 @@ public class LoginData {
     @SerializedName("__v")
     @Expose
     private Integer v;
+    @SerializedName("accessToken")
+    @Expose
+    private String accessToken;
 
     public String getId() {
         return id;
@@ -51,12 +53,12 @@ public class LoginData {
         this.id = id;
     }
 
-    public String getPatientname() {
-        return patientname;
+    public String getDoctorname() {
+        return doctorname;
     }
 
-    public void setPatientname(String patientname) {
-        this.patientname = patientname;
+    public void setDoctorname(String doctorname) {
+        this.doctorname = doctorname;
     }
 
     public String getFathername() {
@@ -75,12 +77,12 @@ public class LoginData {
         this.address = address;
     }
 
-    public String getDeviceid() {
-        return deviceid;
+    public String getQualification() {
+        return qualification;
     }
 
-    public void setDeviceid(String deviceid) {
-        this.deviceid = deviceid;
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
     }
 
     public String getPhonenumber() {
@@ -91,12 +93,12 @@ public class LoginData {
         this.phonenumber = phonenumber;
     }
 
-    public String getDisease() {
-        return disease;
+    public String getSpecialization() {
+        return specialization;
     }
 
-    public void setDisease(String disease) {
-        this.disease = disease;
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
     }
 
     public String getPassword() {
@@ -105,14 +107,6 @@ public class LoginData {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
     }
 
     public String getCreatedAt() {
@@ -137,6 +131,14 @@ public class LoginData {
 
     public void setV(Integer v) {
         this.v = v;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
 }

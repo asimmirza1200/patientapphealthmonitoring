@@ -4,10 +4,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.f.healthmonitoring.Adapter.PatientListAdapter;
 import com.f.healthmonitoring.R;
-import com.f.healthmonitoring.ui.SeeAllDoctor.SeeAllDoctorFragment;
-import com.f.healthmonitoring.ui.SeeMedicinePrescriptions.SeeMedicinePrescriptionsFragment;
+import com.f.healthmonitoring.ui.Profile.ProfileFragment;
+import com.f.healthmonitoring.ui.SeeMedicinePrescriptions.SeeMedicineFragment;
 import com.f.healthmonitoring.ui.home.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -30,7 +29,6 @@ SearchView searchView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
-private PatientListAdapter list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,40 +81,44 @@ public void HomeFragment(){
     transaction.commit();
 
 }
-    public void SeeAllDoctorFragment(){
-        SeeAllDoctorFragment frag = new SeeAllDoctorFragment();
+
+
+    public void SeeMedicineFragment(){
+        SeeMedicineFragment frag = new SeeMedicineFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.nav_host_fragment,frag,"Test Fragment");
         transaction.commit();
 
     }
-    public void SeeMedicinePrescriptionFragment(){
-        SeeMedicinePrescriptionsFragment frag = new SeeMedicinePrescriptionsFragment();
+
+    public void ProfileFragment(){
+        ProfileFragment frag = new ProfileFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.nav_host_fragment,frag,"Test Fragment");
         transaction.commit();
 
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
- if (id == R.id.nav_home)
-           HomeFragment();
+ if (id == R.id.nav_home) {
+     HomeFragment();
 
-        else if (id == R.id.nav_seeallldoctor)
- {
-     SeeAllDoctorFragment();
  }
 
 
         else if (id == R.id.nav_Seemedicineprescriptionlist)
  {
-     SeeMedicinePrescriptionFragment();
+     SeeMedicineFragment();
  }
+else if (id == R.id.nav_Profile)
+        {
+            ProfileFragment();
+        }
+
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

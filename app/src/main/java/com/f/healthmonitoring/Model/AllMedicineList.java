@@ -5,17 +5,17 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AllDoctor {
+public class AllMedicineList {
 
     @SerializedName("response")
     @Expose
-    private List<Doctor> response = null;
+    private List<Medicine> response = null;
 
-    public List<Doctor> getResponse() {
+    public List<Medicine> getResponse() {
         return response;
     }
 
-    public void setResponse(List<Doctor> response) {
+    public void setResponse(List<Medicine> response) {
         this.response = response;
     }
 

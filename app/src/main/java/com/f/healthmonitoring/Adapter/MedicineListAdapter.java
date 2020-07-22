@@ -69,9 +69,9 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
          final Medicine movie = filterMedicineList.get(position);
-        holder.medicinename.setText(movie.getMedicinename());
-        holder.prescriptedBy.setText(movie.getPrescriptedBy());
-        holder.symptoms.setText(movie.getSymptoms());
+        holder.medicinename.setText(movie.getMedicine());
+        holder.prescriptedBy.setText(movie.getDisease());
+        holder.symptoms.setText(movie.getSymptom());
         holder.disease.setText(movie.getDisease());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +135,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
 
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name or phone number match
-                        if (row.getMedicinename().toLowerCase().contains(charString.toLowerCase()) ) {
+                        if (row.getMedicine().toLowerCase().contains(charString.toLowerCase()) ) {
                             filteredList.add(row);
                         }
                     }

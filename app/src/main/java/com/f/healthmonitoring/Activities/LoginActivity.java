@@ -19,7 +19,6 @@ import com.f.healthmonitoring.Model.LoginResponse;
 import com.f.healthmonitoring.R;
 import com.f.healthmonitoring.api_response.ApiClient;
 import com.f.healthmonitoring.api_response.ApiInterface;
-import com.f.healthmonitoring.ui.home.HomeFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -81,18 +80,18 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-//                if (phone.getText().toString().isEmpty()) {
-//                    phone.setError("Please Enter phone");
-//                } else if (pass.getText().toString().isEmpty()) {
-//                    pass.setError("Please Enter password");
+                if (phone.getText().toString().isEmpty()) {
+                    phone.setError("Please Enter phone");
+                } else if (pass.getText().toString().isEmpty()) {
+                    pass.setError("Please Enter password");
 
-//                }
-//               if
-//                {
+                }
+              else
+                {
 
                     prepareMovieData();
                 }
-//            }
+            }
 
         });
     }
@@ -121,9 +120,15 @@ public class LoginActivity extends AppCompatActivity {
                         Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                         SharedPreferences.Editor prefs = getSharedPreferences("login", MODE_PRIVATE).edit();
                         prefs.putString("Token", response.body().getData().getAccessToken());//"No name defined" is the default value.
-                        prefs.putString("name", response.body().getData().getDoctorname());//"No name defined" is the default value.
+                        prefs.putString("Name", response.body().getData().getPatientname());//"No name defined" is the default value.
+                        prefs.putString("Fname", response.body().getData().getFathername());//"No name defined" is the default value.
+                        prefs.putString("Address", response.body().getData().getAddress());//"No name defined" is the default value.
                         prefs.putString("phone", response.body().getData().getPhonenumber());//"No name defined" is the default value.
+                        prefs.putString("Disease", response.body().getData().getDisease());//"No name defined" is the default value.
+                        prefs.putString("Deviceid", response.body().getData().getDeviceid());//"No name defined" is the default value.
+                        prefs.putString("Date", response.body().getData().getCreatedAt());//"No name defined" is the default value.
                         prefs.putString("id", response.body().getData().getId());//"No name defined" is the default value
+
                         prefs.apply();
                         LoginActivity.this.startActivity(mainIntent);
                         LoginActivity.this.finish();

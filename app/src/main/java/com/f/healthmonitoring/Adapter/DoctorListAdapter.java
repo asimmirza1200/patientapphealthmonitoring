@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.f.healthmonitoring.Activities.ProfileActivityDoctor;
 import com.f.healthmonitoring.Activities.SendMassageActivity;
-import com.f.healthmonitoring.Model.Doctor;
+import com.f.healthmonitoring.Model.AssignData;
 import com.f.healthmonitoring.R;
 
 import java.io.Serializable;
@@ -23,8 +23,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.MyViewHolder> implements Filterable {
 
-    private List<Doctor> doctorList;
-    private List<Doctor> filterdoctorist;
+    private List<AssignData> doctorList;
+    private List<AssignData> filterdoctorist;
     private Context context;
 public Button profiles,send;
 
@@ -50,7 +50,7 @@ send.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    public DoctorListAdapter(List<Doctor> moviesList, Context context) {
+    public DoctorListAdapter(List<AssignData> moviesList, Context context) {
         this.doctorList = moviesList;
         this.filterdoctorist = moviesList;
         this.context=context;
@@ -67,17 +67,15 @@ send.setOnClickListener(new View.OnClickListener() {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-         final Doctor movie = filterdoctorist.get(position);
-        holder.doctorname.setText(movie.getDoctorname());
-        holder.specialization.setText(movie.getSpecialization());
-        holder.phonenumber.setText(movie.getPhonenumber());
+         final AssignData movie = filterdoctorist.get(position);
+        holder.doctorname.setText(movie.getDoctorData().getDoctorname());
+        holder.specialization.setText(movie.getDoctorData().getSpecialization());
+        holder.phonenumber.setText(movie.getDoctorData().getPhonenumber());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(context, ProfileActivityDoctor.class);
                 mainIntent.putExtra("Doctor",(Serializable) movie);
-
-
 
                 context.startActivity(mainIntent);
             }
@@ -131,12 +129,12 @@ send.setOnClickListener(new View.OnClickListener() {
                 if (charString.isEmpty()) {
                     filterdoctorist = doctorList;
                 } else {
-                    List<Doctor> filteredList = new ArrayList<>();
-                    for (Doctor row : doctorList) {
+                    List<AssignData> filteredList = new ArrayList<>();
+                    for (AssignData row : doctorList) {
 
                         // name match condition. this might differ depending on your requirement
                         // here we are looking for name or phone number match
-                        if (row.getDoctorname().toLowerCase().contains(charString.toLowerCase()) ||(row.getSpecialization().toLowerCase()).contains(charSequence)) {
+                        if (row.getDoctorData().getDoctorname().toLowerCase().contains(charString.toLowerCase()) ||(row.getDoctorData().getSpecialization().toLowerCase()).contains(charSequence)) {
                             filteredList.add(row);
                         }
                     }
@@ -151,7 +149,7 @@ send.setOnClickListener(new View.OnClickListener() {
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                filterdoctorist = (ArrayList<Doctor>) filterResults.values;
+                filterdoctorist = (ArrayList<AssignData>) filterResults.values;
 
                 // refresh the list with filtered data
                 notifyDataSetChanged();

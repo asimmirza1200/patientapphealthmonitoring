@@ -1,4 +1,4 @@
-package com.f.healthmonitoring.ui.SeeAllDoctor;
+package com.f.healthmonitoring.ui.SeeMedicinePrescriptions;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.f.healthmonitoring.Adapter.DoctorListAdapter;
+import com.f.healthmonitoring.Adapter.MedicineListAdapter;
+import com.f.healthmonitoring.Model.AllAssignDoctor;
+import com.f.healthmonitoring.Model.AllMedicineList;
+import com.f.healthmonitoring.Model.AssignData;
+import com.f.healthmonitoring.R;
+import com.f.healthmonitoring.api_response.ApiClient;
+import com.f.healthmonitoring.api_response.ApiInterface;
+import com.f.healthmonitoring.ui.home.HomeViewModel;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,33 +34,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import com.f.healthmonitoring.Adapter.DoctorListAdapter;
-import com.f.healthmonitoring.Model.AllDoctor;
-import com.f.healthmonitoring.Model.Doctor;
-import com.f.healthmonitoring.R;
-import com.f.healthmonitoring.api_response.ApiClient;
-import com.f.healthmonitoring.api_response.ApiInterface;
-
-import java.util.List;
-
 import static android.content.Context.MODE_PRIVATE;
 
-public class SeeAllDoctorFragment extends Fragment {
+public class SeeMedicineFragment extends Fragment {
 
-    private SeeAllDoctorViewModel seeAllDoctorViewModel;
+    private HomeViewModel seeAllDoctorViewModel;
     RecyclerView recyclerView;
-    private List<Doctor> doctors;
-private AllDoctor allDoctor;
+    private List<AssignData> doctors;
+  private AllMedicineList allMedicineList;
     private ProgressBar progressBar;
 
     private SearchView searchView;
-    private DoctorListAdapter list;
+    private MedicineListAdapter list;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         seeAllDoctorViewModel =
-                ViewModelProviders.of(this).get(SeeAllDoctorViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_see_all_doctor, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("All Doctor List");
+                ViewModelProviders.of(this).get(HomeViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_see_medicine_prescriptions, container, false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Medicine List");
 
         recyclerView = (RecyclerView)root.findViewById(R.id.recycler_view);
         searchView = (SearchView)root.findViewById(R.id.search);
@@ -88,15 +91,16 @@ private AllDoctor allDoctor;
          **/
         SharedPreferences prefs = getActivity().getSharedPreferences("login", MODE_PRIVATE);
         String token = prefs.getString("Token", null);//"No name defined" is the default value.
-        Call<AllDoctor> call = apiInterface.getAllDoctor("Bearer "+token);
-        call.enqueue(new Callback<AllDoctor>() {
+        String _id = prefs.getString("id", null);//"No name defined" is the default value.
+        Call<AllMedicineList> call = apiInterface.getAssignMedicineData("Bearer "+token,_id);
+        call.enqueue(new Callback<AllMedicineList>() {
             @Override
-            public void onResponse(Call<AllDoctor> call, Response<AllDoctor> response) {
+            public void onResponse(Call<AllMedicineList> call, Response<AllMedicineList> response) {
                 progressBar.setVisibility(View.INVISIBLE);
 
                 if (response.isSuccessful()) {
 
-                    list = new DoctorListAdapter(response.body().getResponse(), getContext());
+                    list = new MedicineListAdapter(response.body().getResponse(), getContext());
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                     recyclerView.setLayoutManager(mLayoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -112,7 +116,7 @@ private AllDoctor allDoctor;
             }
 
             @Override
-            public void onFailure(Call<AllDoctor> call, Throwable t) {
+            public void onFailure(Call<AllMedicineList> call, Throwable t) {
                 call.cancel();
                 progressBar.setVisibility(View.GONE);
 
@@ -123,8 +127,8 @@ private AllDoctor allDoctor;
     }
 
     private SharedPreferences getSharedPreferences(String login, int modePrivate) {
-        return null;
-    }
+    return null;
+}
 }
 
 

@@ -5,32 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.ProfileActivity">
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_top"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:minHeight="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
 
-            >
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Patient Profile"
-                android:textSize="23dp"
-                android:layout_gravity="center"
-                android:textColor="#fff"
-                android:id="@+id/toolbar_title" />
-
-
-        </androidx.appcompat.widget.Toolbar>
 
     </LinearLayout>
 
@@ -118,12 +98,12 @@
             android:textSize="11.3sp"/>
 
         <TextView
+            android:id="@+id/pname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:paddingLeft="21dp"
             android:paddingBottom="15dp"
-            android:text="Atif Mehmood"
             android:textStyle="bold"
             android:textSize="14sp" />
     </LinearLayout>
@@ -162,12 +142,12 @@
                     android:textSize="11.3sp" />
 
                 <TextView
+                    android:id="@+id/pfname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
-                    android:text="Muhammad Maskeen"
                     android:textSize="14sp"
 
                     android:textStyle="bold" />
@@ -205,12 +185,12 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/paddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
-                    android:text="Rawalpindi"
                     android:textStyle="bold"
 
                     android:textSize="14sp" />
@@ -248,12 +228,12 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/pphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
-                    android:text="03075445663"
                     android:textStyle="bold"
 
                     android:textSize="14sp" />
@@ -291,12 +271,12 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/pdisease"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
-                    android:text="Fever"
                     android:textStyle="bold"
 
                     android:textSize="14sp" />
@@ -334,12 +314,12 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/pdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
-                    android:text="27/3/2020"
                     android:textStyle="bold"
 
                     android:textSize="14sp" />
@@ -377,12 +357,12 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/deviceid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
-                    android:text="2"
                     android:textStyle="bold"
 
                     android:textSize="14sp" />

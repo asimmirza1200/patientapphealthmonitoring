@@ -70,9 +70,10 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="1.5dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
                     android:text=""
@@ -111,9 +112,10 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/fname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="1.5dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
                     android:text=""
@@ -153,9 +155,10 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="1.5dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
                     android:text=""
@@ -186,18 +189,20 @@
                 android:paddingBottom="0dp"
                 android:layout_marginTop="-20dp"
                 android:paddingTop="17dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone Number:"
                     android:layout_marginTop="10dp"
                     android:paddingLeft="21dp"
-                    android:textSize="11.3sp"/>
+                    android:text="Phone Number:"
+                    android:textSize="11.3sp" />
 
                 <TextView
+                    android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="1.5dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
                     android:text=""
@@ -237,9 +242,10 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/sep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="1.5dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
                     android:text=""
@@ -279,9 +285,10 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="1.5dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
                     android:text=""
@@ -321,9 +328,10 @@
                     android:textSize="11.3sp"/>
 
                 <TextView
+                    android:id="@+id/qual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="2dp"
                     android:paddingLeft="21dp"
                     android:paddingBottom="15dp"
                     android:text=""
