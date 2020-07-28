@@ -31,7 +31,7 @@ public class MessageDataSource {
         msg.put(COLUMN_TEXT, message.getText());
         msg.put(COLUMN_SENDER,message.getSender());
         sRef.child(convoId).child(key).setValue(msg);
-        sendPushNotificationToReceiver(userData.getPatientData().getPatientname(),message.getText(),message.getSender(),userData.getPatientData().getFirbaseToken(),userData.getPatientData().getFirbaseToken());
+        sendPushNotificationToReceiver(userData.getPatientData().getPatientname(),message.getText(),message.getSender(),userData.getPatientData().getFirbaseToken(),userData.getDoctorData().getFirbaseToken());
     }
     public static void sendPushNotificationToReceiver(
                                                 String username,
