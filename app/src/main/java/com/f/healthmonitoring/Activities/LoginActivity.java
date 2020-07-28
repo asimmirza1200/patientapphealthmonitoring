@@ -19,6 +19,9 @@ import com.f.healthmonitoring.Model.LoginResponse;
 import com.f.healthmonitoring.R;
 import com.f.healthmonitoring.api_response.ApiClient;
 import com.f.healthmonitoring.api_response.ApiInterface;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -100,60 +103,66 @@ public class LoginActivity extends AppCompatActivity {
             pass.setEnabled(false);
             phone.setEnabled(false);
             signin.setEnabled(false);
-            ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+            final ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
             progressBar.setVisibility(View.VISIBLE);
 
             /**
              GET List Resources
              **/
-            Call<LoginResponse> call = apiInterface.login(phone.getText().toString(), pass.getText().toString());
-            call.enqueue(new Callback<LoginResponse>() {
+            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, new OnSuccessListener<InstanceIdResult>() {
                 @Override
-                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    pass.setEnabled(true);
-                    phone.setEnabled(true);
-                    signin.setEnabled(true);
-                    if (Boolean.parseBoolean(response.body().getStatus())) {
+                public void onSuccess(InstanceIdResult instanceIdResult) {
+                    Call<LoginResponse> call = apiInterface.login(instanceIdResult.getToken(),phone.getText().toString(), pass.getText().toString());
+                    call.enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            pass.setEnabled(true);
+                            phone.setEnabled(true);
+                            signin.setEnabled(true);
+                            if (Boolean.parseBoolean(response.body().getStatus())) {
 
-                        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                        SharedPreferences.Editor prefs = getSharedPreferences("login", MODE_PRIVATE).edit();
-                        prefs.putString("Token", response.body().getData().getAccessToken());//"No name defined" is the default value.
-                        prefs.putString("Name", response.body().getData().getPatientname());//"No name defined" is the default value.
-                        prefs.putString("Fname", response.body().getData().getFathername());//"No name defined" is the default value.
-                        prefs.putString("Address", response.body().getData().getAddress());//"No name defined" is the default value.
-                        prefs.putString("phone", response.body().getData().getPhonenumber());//"No name defined" is the default value.
-                        prefs.putString("Disease", response.body().getData().getDisease());//"No name defined" is the default value.
-                        prefs.putString("Deviceid", response.body().getData().getDeviceid());//"No name defined" is the default value.
-                        prefs.putString("Date", response.body().getData().getCreatedAt());//"No name defined" is the default value.
-                        prefs.putString("id", response.body().getData().getId());//"No name defined" is the default value
+                                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                                SharedPreferences.Editor prefs = getSharedPreferences("login", MODE_PRIVATE).edit();
+                                prefs.putString("Token", response.body().getData().getAccessToken());//"No name defined" is the default value.
+                                prefs.putString("Name", response.body().getData().getPatientname());//"No name defined" is the default value.
+                                prefs.putString("Fname", response.body().getData().getFathername());//"No name defined" is the default value.
+                                prefs.putString("Address", response.body().getData().getAddress());//"No name defined" is the default value.
+                                prefs.putString("phone", response.body().getData().getPhonenumber());//"No name defined" is the default value.
+                                prefs.putString("Disease", response.body().getData().getDisease());//"No name defined" is the default value.
+                                prefs.putString("Deviceid", response.body().getData().getDeviceid());//"No name defined" is the default value.
+                                prefs.putString("Date", response.body().getData().getCreatedAt());//"No name defined" is the default value.
+                                prefs.putString("id", response.body().getData().getId());//"No name defined" is the default value
 
-                        prefs.apply();
-                        LoginActivity.this.startActivity(mainIntent);
-                        LoginActivity.this.finish();
-                        Toast.makeText(LoginActivity.this,response.body().getMessage() , Toast.LENGTH_SHORT).show();
-
-
+                                prefs.apply();
+                                LoginActivity.this.startActivity(mainIntent);
+                                LoginActivity.this.finish();
+                                Toast.makeText(LoginActivity.this,response.body().getMessage() , Toast.LENGTH_SHORT).show();
 
 
-                    } else {
 
-                        Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
 
-                }
+                            } else {
 
-                @Override
-                public void onFailure(Call<LoginResponse> call, Throwable t) {
-                    progressBar.setVisibility(View.INVISIBLE);
-                    pass.setEnabled(true);
-                    phone.setEnabled(true);
-                    signin.setEnabled(true);
-                    Toast.makeText(LoginActivity.this, "Invalid Credential", Toast.LENGTH_SHORT).show();
-                    Log.e("jhjhj",t.getMessage());
+                                Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            pass.setEnabled(true);
+                            phone.setEnabled(true);
+                            signin.setEnabled(true);
+                            Toast.makeText(LoginActivity.this, "Invalid Credential", Toast.LENGTH_SHORT).show();
+                            Log.e("jhjhj",t.getMessage());
+                        }
+                    });
+
                 }
             });
-        }
+}
     }
 

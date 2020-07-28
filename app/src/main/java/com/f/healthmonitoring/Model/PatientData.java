@@ -35,6 +35,9 @@ public class PatientData implements Serializable {
     @SerializedName("accessToken")
     @Expose
     private String accessToken;
+    @SerializedName("firbaseToken")
+    @Expose
+    private String firbaseToken;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -71,6 +74,14 @@ public class PatientData implements Serializable {
 
     public String getAddress() {
         return address;
+    }
+
+    public String getFirbaseToken() {
+        return firbaseToken;
+    }
+
+    public void setFirbaseToken(String firbaseToken) {
+        this.firbaseToken = firbaseToken;
     }
 
     public void setAddress(String address) {

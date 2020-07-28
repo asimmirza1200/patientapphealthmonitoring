@@ -44,7 +44,9 @@ public class DoctorData implements Serializable {
     @SerializedName("accessToken")
     @Expose
     private String accessToken;
-
+    @SerializedName("firbaseToken")
+    @Expose
+    private String firbaseToken;
     public String getId() {
         return id;
     }
@@ -59,6 +61,14 @@ public class DoctorData implements Serializable {
 
     public void setDoctorname(String doctorname) {
         this.doctorname = doctorname;
+    }
+
+    public String getFirbaseToken() {
+        return firbaseToken;
+    }
+
+    public void setFirbaseToken(String firbaseToken) {
+        this.firbaseToken = firbaseToken;
     }
 
     public String getFathername() {

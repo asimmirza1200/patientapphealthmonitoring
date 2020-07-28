@@ -1,5 +1,7 @@
 package com.f.healthmonitoring.Activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -66,8 +68,11 @@ SearchView searchView;
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==R.id.nav_home){
-
+        if (item.getItemId()==R.id.action_logout){
+            SharedPreferences.Editor prefs = getSharedPreferences("login", MODE_PRIVATE).edit();
+           prefs.clear().apply();
+           finishAffinity();
+           startActivity(new Intent(getApplicationContext(),LoginActivity.class));
         }
 
 

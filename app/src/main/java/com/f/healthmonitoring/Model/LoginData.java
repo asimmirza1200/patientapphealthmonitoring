@@ -33,6 +33,9 @@ public class LoginData {
     @SerializedName("accessToken")
     @Expose
     private String accessToken;
+    @SerializedName("firbaseToken")
+    @Expose
+    private String firbaseToken;
     @SerializedName("createdAt")
     @Expose
     private String createdAt;
@@ -45,6 +48,14 @@ public class LoginData {
 
     public String getId() {
         return id;
+    }
+
+    public String getFirbaseToken() {
+        return firbaseToken;
+    }
+
+    public void setFirbaseToken(String firbaseToken) {
+        this.firbaseToken = firbaseToken;
     }
 
     public void setId(String id) {

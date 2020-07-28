@@ -15,7 +15,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("loginPatient")
-    Call<LoginResponse> login(@Field("phonenumber") String phonenumber, @Field("password") String password);
+    Call<LoginResponse> login(@Field("token") String token,@Field("phonenumber") String phonenumber, @Field("password") String password);
 
     @FormUrlEncoded
     @POST("getAssignDoctor")

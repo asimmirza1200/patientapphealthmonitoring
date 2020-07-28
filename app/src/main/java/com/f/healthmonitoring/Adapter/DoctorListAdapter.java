@@ -14,6 +14,7 @@ import com.f.healthmonitoring.Activities.ProfileActivityDoctor;
 import com.f.healthmonitoring.Activities.SendMassageActivity;
 import com.f.healthmonitoring.Model.AssignData;
 import com.f.healthmonitoring.R;
+import com.f.healthmonitoring.awesomefirebase.MainActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,10 +27,10 @@ public class DoctorListAdapter extends RecyclerView.Adapter<DoctorListAdapter.My
     private List<AssignData> doctorList;
     private List<AssignData> filterdoctorist;
     private Context context;
-public Button profiles,send;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView doctorname, specialization, phonenumber;
+        public Button profiles,send;
 
         public MyViewHolder(View view) {
             super(view);
@@ -38,13 +39,7 @@ public Button profiles,send;
             phonenumber = (TextView) view.findViewById(R.id.phone);
             send = (Button) view.findViewById(R.id.send);
 
-send.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent =new Intent(context, SendMassageActivity.class);
-        context.startActivity(intent);
-    }
-});
+
 
         }
     }
@@ -80,7 +75,15 @@ send.setOnClickListener(new View.OnClickListener() {
                 context.startActivity(mainIntent);
             }
         });
+        holder.send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(context, MainActivity.class);
+                mainIntent.putExtra("Doctor",(Serializable) movie);
 
+                context.startActivity(mainIntent);
+            }
+        });
 
     }
 //    public void showNotification(Context context, String title, String body, Intent intent) {

@@ -29,6 +29,7 @@ import com.f.healthmonitoring.R;
 import com.f.healthmonitoring.api_response.ApiClient;
 import com.f.healthmonitoring.api_response.ApiInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -52,6 +53,7 @@ private AllAssignDoctor allDoctor;
 
         recyclerView = (RecyclerView)root.findViewById(R.id.recycler_view);
         searchView = (SearchView)root.findViewById(R.id.search);
+        list = new DoctorListAdapter(new ArrayList<AssignData>(), getContext());
 
         progressBar=(ProgressBar)root.findViewById(R.id.progress_doctor);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
