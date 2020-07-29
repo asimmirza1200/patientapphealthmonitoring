@@ -56,27 +56,6 @@ public class ProfileFragment extends Fragment {
         temp=(Button)root.findViewById(R.id.temp);
         heartbeat=(Button)root.findViewById(R.id.heart);
         ecg=(Button)root.findViewById(R.id.ecg);
-        heartbeat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(getContext(), CheckHeartbeatActivity.class);
-                startActivity(intent);
-            }
-        });
-        ecg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 =new Intent(getContext(), CheckEcgActivity.class);
-                startActivity(intent1);
-            }
-        });
-        temp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent2 =new Intent(getContext(), CheckTemperatureActivity.class);
-                startActivity(intent2);
-            }
-        });
         SharedPreferences prefs = getActivity().getSharedPreferences("login", MODE_PRIVATE);
         String token = prefs.getString("Token", null);//"No name defined" is the default value.
         String _id = prefs.getString("id", null);//"No name defined" is the default value.
@@ -85,9 +64,39 @@ public class ProfileFragment extends Fragment {
         String address = prefs.getString("Address", null);//"No name defined" is the default value.
         String phone = prefs.getString("phone", null);//"No name defined" is the default value.
         String disease = prefs.getString("Disease", null);//"No name defined" is the default value.
-        String deviceid = prefs.getString("Deviceid", null);//"No name defined" is the default value.
+        final String deviceid = prefs.getString("Deviceid", null);//"No name defined" is the default value.
         String date = prefs.getString("Date", null);//"No name defined" is the default value.
-        TextView pname= root.findViewById(R.id.pname);
+
+        heartbeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getContext(), CheckHeartbeatActivity.class);
+                intent.putExtra("id",deviceid);
+
+                startActivity(intent);
+            }
+        });
+
+        ecg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 =new Intent(getContext(), CheckEcgActivity.class);
+                intent1.putExtra("id",deviceid);
+
+                startActivity(intent1);
+            }
+        });
+        temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent2 =new Intent(getContext(), CheckTemperatureActivity.class);
+                intent2.putExtra("id",deviceid);
+
+                startActivity(intent2);
+            }
+        });
+       TextView pname= root.findViewById(R.id.pname);
         TextView Fathername= root.findViewById(R.id.pfname);
         TextView Address= root.findViewById(R.id.paddress);
         TextView Disease= root.findViewById(R.id.pdisease);
