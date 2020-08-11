@@ -70,7 +70,7 @@ GraphView graph;
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 DHT value = dataSnapshot.getValue(DHT.class);
 
-                Log.d("TAG", "Value is: " + value.getTemp());
+                Log.d("TAG", "Value is: " + value.getTemp()+getIntent().getStringExtra("id").substring(0,7));
                 if ( MD5(value.getTemp()+getIntent().getStringExtra("id").substring(0,7)).equals(value.getHash())) {
 
                     graphLastXValue += 2.00d;
@@ -109,6 +109,7 @@ GraphView graph;
             for (int i = 0; i < array.length; ++i) {
                 sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
             }
+            Log.d("hash",sb.toString());
             return sb.toString();
         } catch (NoSuchAlgorithmException e) {
         }

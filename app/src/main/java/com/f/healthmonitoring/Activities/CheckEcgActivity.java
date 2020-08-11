@@ -65,7 +65,8 @@ public class CheckEcgActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference(MD5(getIntent().getStringExtra("id"))+"/sensor/ecg");
 // Read from the database
         final DataPoint[] dataPoints={};
-        myRef.addChildEventListener(new ChildEventListener() {
+
+        myRef.limitToLast(50).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 ECG value = dataSnapshot.getValue(ECG.class);

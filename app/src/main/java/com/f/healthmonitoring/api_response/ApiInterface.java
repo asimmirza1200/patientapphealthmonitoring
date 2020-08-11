@@ -21,6 +21,7 @@ public interface ApiInterface {
     @POST("getAssignDoctor")
     Call<AllAssignDoctor> getAssignDoctor(@Header("Authorization")String token,@Field("patient_id") String patient_id);
 
+
     @FormUrlEncoded
     @POST("getAssignMedicineData")
     Call<AllMedicineList> getAssignMedicineData(@Header("Authorization")String token, @Field("patient_id") String patient_id);
